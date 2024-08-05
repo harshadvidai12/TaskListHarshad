@@ -1,0 +1,30 @@
+<!-- task-list.component.html -->
+<div class="col-12 outerListDiv">
+  <div class="col-6 OuterTable">
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Due Date</th>
+        <th>Priority</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let task of dataList" (click)="selectTask(task)">
+        <td>{{ task.title }}</td>
+        <td>{{ task.dueDate }}</td>
+        <td>
+          <div *ngIf="task.priority === 'high'" class="highindicator">High</div>
+          <div *ngIf="task.priority === 'medium'" class="mediumindicator">Medium</div>
+          <div *ngIf="task.priority === 'low'" class="lowIndicator">Low</div>
+        </td>
+        <td>{{ task.status }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-6 OuterTable" *ngIf="selectedTask">
+    <h2>Details</h2>
+    <div class="col-12"><span>Title:</span> {{ selectedTask.title }}</div>
+    <div class="col-12"><span>Due Date:</span> {{ selectedTask.dueDate }}</div>
+    <div class="col-12"><span>Priority:</span> {{ selectedTask.priority }}</div>
+    <div class="col-12"><span>Status:</span> {{ selectedTask.status }}</div>
+  </div>
+</div>
